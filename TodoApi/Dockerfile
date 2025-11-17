@@ -10,4 +10,8 @@ COPY . .
 
 RUN dotnet publish -c Release -o out
 
+RUN useradd -m appuser
+
+USER appuser
+
 ENTRYPOINT ["dotnet", "/app/out/TodoApi.dll"]
