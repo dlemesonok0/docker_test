@@ -12,7 +12,7 @@ RUN dotnet publish -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 
-LABEL maintainer="Дмитрий Лемешонок"
+LABEL MAINTAINER="Дмитрий Лемешонок"
 ENV APP_VERSION="1.0.0"
 
 WORKDIR /app
