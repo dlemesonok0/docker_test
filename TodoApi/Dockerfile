@@ -1,7 +1,5 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
-WORKDIR /app
-
 COPY *.csproj ./
 RUN dotnet restore
 
@@ -14,6 +12,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS final
 LABEL MAINTAINER="Дмитрий Лемешонок"
 
 ENV APP_VERSION="1.0.0"
+
+WORKDIR /app
 
 COPY --from=build /app/out .
 
