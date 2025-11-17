@@ -1,5 +1,7 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
+WORKDIR /src
+
 COPY *.csproj ./
 RUN dotnet restore
 
@@ -7,10 +9,10 @@ COPY . .
 
 RUN dotnet publish -c Release -o /app/out
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS final
+
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 
 LABEL MAINTAINER="Дмитрий Лемешонок"
-
 ENV APP_VERSION="1.0.0"
 
 WORKDIR /app
@@ -21,4 +23,4 @@ RUN useradd -m appuser && chown -R appuser:appuser /app
 
 USER appuser
 
-ENTRYPOINT ["dotnet", "/app/out/TodoApi.dll"]
+ENTRYPOINT ["dotnet", "TodoApi.dll"]
