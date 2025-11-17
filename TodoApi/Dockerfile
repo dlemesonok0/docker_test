@@ -2,6 +2,8 @@
 
 LABEL MAINTAINER="Дмитрий Лемешонок"
 
+ENV APP_VERSION="1.0.0"
+
 WORKDIR /app
 
 COPY . .
