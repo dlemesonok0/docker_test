@@ -5,7 +5,7 @@ RUN dotnet restore
 
 COPY . .
 
-RUN dotnet publish -c Release -o -o /app/out
+RUN dotnet publish -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS final
 
