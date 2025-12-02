@@ -4,6 +4,7 @@ services:
     ports:
       - "127.0.0.1:8080:8080"
     container_name: "app"
+    restart: on-failure
     healthcheck:
       test: [ "CMD", "curl", "-f", "http://localhost:8080/health" ]
       interval: 30s
