@@ -15,6 +15,7 @@ services:
       start_period: 10s
     networks:
       - internal_network
+    cpus: 1.0
       
   db:
     image: postgres:17-alpine
