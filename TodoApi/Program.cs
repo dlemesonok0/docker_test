@@ -20,6 +20,9 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
+app.MapGet("/health", async () =>
+    Results.Ok());
+
 app.MapGet("/todos", async (TodoContext db) =>
     await db.Todos.AsNoTracking().ToListAsync());
 
