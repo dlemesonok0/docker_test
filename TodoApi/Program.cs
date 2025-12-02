@@ -7,7 +7,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString = builder.Configuration.GetConnectionString("TodoConnection") ?? "Data Source=todo.db";
-builder.Services.AddDbContext<TodoContext>(options => options.UseSqlite(connectionString));
+builder.Services.AddDbContext<TodoContext>(options =>
+    options.UseNpgsql(connectionString));
 
 var app = builder.Build();
 
