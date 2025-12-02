@@ -13,6 +13,8 @@ services:
       timeout: 5s
       retries: 3
       start_period: 10s
+    networks:
+      - internal_network
       
   db:
     image: postgres:17-alpine
@@ -26,7 +28,13 @@ services:
       POSTGRES_DB: tododb
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - internal_network
     restart: on-failure
+    
+networks:
+  internal_network:
+    driver: bridge
 
 volumes:
   pgdata:
