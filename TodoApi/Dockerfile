@@ -17,11 +17,11 @@ ENV APP_VERSION="1.0.0"
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+RUN apk add --no-cache curl
 
 COPY --from=build /app/out .
 
-RUN useradd -m appuser && chown -R appuser:appuser /app
+RUN adduser -D -g '' appuser && chown -R appuser:appuser /app
 
 USER appuser
 
