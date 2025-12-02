@@ -17,6 +17,7 @@ services:
   db:
     image: postgres:17-alpine
     container_name: db
+    hostname: database_host
     environment:
       POSTGRES_USER: todo
       POSTGRES_PASSWORD: todo
